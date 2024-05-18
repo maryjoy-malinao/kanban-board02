@@ -1,0 +1,180 @@
+:root {
+  --max-width: 1100px;
+  --border-radius: 12px;
+  --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
+    "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
+    "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+
+  --primary-glow: conic-gradient(
+    from 180deg at 50% 50%,
+    #16abff33 0deg,
+    #0885ff33 55deg,
+    #54d6ff33 120deg,
+    #0071ff33 160deg,
+    transparent 360deg
+  );
+  --secondary-glow: radial-gradient(
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0)
+  );
+
+  --tile-start-rgb: 239, 245, 249;
+  --tile-end-rgb: 228, 232, 233;
+  --tile-border: conic-gradient(
+    #00000080,
+    #00000040,
+    #00000030,
+    #00000020,
+    #00000010,
+    #00000010,
+    #00000080
+  );
+
+  --callout-rgb: 238, 240, 241;
+  --callout-border-rgb: 172, 175, 176;
+  --card-rgb: 180, 185, 188;
+  --card-border-rgb: 131, 134, 135;
+}
+
+.container{
+  margin: auto;
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  align-items: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+
+.container-flex{
+     margin: auto;
+    display: flex;
+    gap: 1rem; 
+}
+
+
+.div-flex{
+    display: flex;
+    gap: 1rem;
+}
+
+
+.box{
+    background-color: '#0d1117';
+    width: 350px;
+    height: 500px;
+    max-height: 500px;
+    border-radius: 0.375rem; 
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.box-title {
+    background-color: '#0d1117';
+    font-size: 1rem; 
+    height: 60px;
+    cursor: grab;
+    border-radius: 0.375rem; 
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0; 
+    padding: 0.75rem; 
+    font-weight: bold;
+    border-color: '#161c22';
+    border-width: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+
+.box-title-right{
+    display: flex;
+    gap: 0.5rem; 
+}
+
+
+
+.box-title-total{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: '#161c22'; /* Replace with your actual background color value */
+    padding-left: 0.5rem;  /* px-2 corresponds to 8px */
+    padding-right: 0.5rem; /* px-2 corresponds to 8px */
+    padding-top: 0.25rem;  /* py-1 corresponds to 4px */
+    padding-bottom: 0.25rem; /* py-1 corresponds to 4px */
+    font-size: 0.875rem; /* text-sm corresponds to 14px */
+    border-radius: 9999px; /* rounded-full corresponds to a large border-radius to make it fully rounded */
+  }
+  
+
+
+.box-task-card {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    gap: 1rem; /* gap-4 corresponds to 1rem (16px) */
+    padding: 0.5rem; /* p-2 corresponds to 0.5rem (8px) */
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  
+
+
+  /* styles.css */
+.box-task-item {
+    background-color: '#0d1117'; /* Replace with your actual background color value */
+    padding: 0.625rem; /* p-2.5 corresponds to 0.625rem (10px) */
+    height: 100px;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    text-align: left;
+    border-radius: 0.75rem; /* rounded-xl corresponds to 12px */
+    cursor: grab;
+    position: relative;
+  }
+  
+  .box-task-item:hover {
+    box-shadow: 0 0 0 2px inset var(#f43f5e, #f43f5e); /* hover:ring-2 hover:ring-inset hover:ring-rose-500 */
+  }
+  
+
+  .box-task-item-title{
+    margin-top: auto;
+    margin-bottom: auto;
+    height: 90%;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    white-space: pre-wrap;
+  }
+
+
+  .box-dragging{
+    background-color: '#0d1117';
+    opacity: 0.4;
+    border-width: 2px;
+    border-style: solid;
+    border-color: fuchsia;
+    width: 350px;
+    height: 500px;
+    max-height: 500px;
+    border-radius: 0.375rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+
+  .div-error{
+    background-color: #f43f5e;
+  }
