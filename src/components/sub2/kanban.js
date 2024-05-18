@@ -97,25 +97,46 @@ function ItemTask({task}) {
             </div>)
 }
 //ColumnContainer
-function ColumnContainer({column, tasks}){
-    const { setNodeRef} = useDroppable({
+function ColumnContainer({column, tasks, activeTask}){
+    const { isOver ,setNodeRef} = useDroppable({
         id: column.id,
         data: {
             type: column.id
         }
       });
 
+      let color = undefined;
+
+      //If the task is within its parent container = no bg color
+      if(isOver && column.id !== activeTask.columnId){
+        
+
+        if(isOver && column.id === activeTask.supports[0]) {
+            color = 'green'
+        }else if(isOver && column.id !== activeTask.supports[0]){
+            color = 'red'
+        }
+    
+      }
+
+      
+
+      const style = {backgroundColor: color}
+
+      
+
     return (
-        <div ref={setNodeRef} style={{width: '200px', height: '1000px', border: '1px solid black'}}>
-            <h1>{column.title}</h1>
-            
-            
-        {tasks.map((task) => (
-            <ItemTask
-                key={task.id}
-                task={task}
-            />         
-         ))}
+        <div ref={setNodeRef} style={style} >
+            <div style={{width: '200px', height: '1000px', border: '1px solid black'}}>
+                <h1>{column.title}</h1>
+
+                {tasks.map((task) => (
+                    <ItemTask
+                        key={task.id}
+                        task={task}
+                    />         
+                ))}
+            </div>
         </div>
     )
 }
@@ -125,7 +146,12 @@ function ColumnContainer({column, tasks}){
 const Kanban = () => {
     const [columns, setColumns] = useState(defaultCols);
     const [tasks, setTasks] = useState(defaultTasks);
-    const [activeTask, setActiveTask] = useState(null);
+    const [activeTask, setActiveTask] = useState({
+        id: "",
+        columnId: "",
+        content: "",
+        supports: []
+    });
 
   return (
     <div style={{display: 'flex'}}>
@@ -135,15 +161,17 @@ const Kanban = () => {
                     key={col.id}
                     column={col}
                     tasks={tasks.filter((task) =>  task.columnId === col.id)}
+                    activeTask={activeTask}
                 />
             ))}
 
 
         <ClientPortal selector="#body">
             <DragOverlay>
-                {activeTask && (
+                {activeTask.id && (
                     <ItemTask
                         task={activeTask}
+                        activeTask={activeTask}
                     />
                 )}
             </DragOverlay>
